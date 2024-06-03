@@ -1,6 +1,8 @@
 import re
 
 class BaseParser:
+  phone_pattern = r"\d{3}-\d{3}-\d{4}"
+
   def __init__(self, text) -> None:
     self.text = text
 
@@ -12,7 +14,7 @@ class BaseParser:
     return None
 
   def phone(self):
-    match = re.search(r"\d{3}-\d{3}-\d{4}", self.text)
+    match = re.search(self.phone_pattern, self.text)
     if match:
       return match.group(0)
 
